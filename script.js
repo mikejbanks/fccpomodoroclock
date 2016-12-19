@@ -11,13 +11,14 @@ audioElementWorkCompleted.setAttribute('src', 'workcompleted.mp3');
 var audioElementBreakOver = document.createElement('audio');
 audioElementBreakOver.setAttribute('src', 'breakover.mp3');
 
-  
+/*Add to session time.*/  
 $('button[id="plusSessionTime"]').click(function(){
 var sessionTimeInline = parseFloat(document.getElementById("sessionTime").innerHTML);
 sessionTimeInline=sessionTimeInline+5;
 $("#sessionTime").html(sessionTimeInline);
 });
 
+/*Decrease from session time.*/
 $('button[id="subtractSessionTime"]').click(function(){
 var sessionTimeInline = parseFloat(document.getElementById("sessionTime").innerHTML);
 if(sessionTimeInline>5){
@@ -26,12 +27,14 @@ $("#sessionTime").html(sessionTimeInline);}
 
 });
 
+/*Add to break time.*/ 
 $('button[id="plusBreakTime"]').click(function(){
 var breakTimeInline = parseFloat(document.getElementById("breakTime").innerHTML);
 breakTimeInline=breakTimeInline+5;
 $("#breakTime").html(breakTimeInline);
 });
 
+/*Decrease from break time.*/
 $('button[id="subtractBreakTime"]').click(function(){
 var breakTimeInline = parseFloat(document.getElementById("breakTime").innerHTML);
 if(breakTimeInline>5){
@@ -48,6 +51,7 @@ $("#subtractBreakTime").prop("disabled",true);
 $("#startTimer").prop("disabled",true);
 
 startTimerSI=setInterval(startSessionFunc, 60000);
+/*Start the Pomodoro Clock. First go through session time, and then go through break.*/
 function startSessionFunc() {
     var sessionTimeInline = parseFloat(document.getElementById("sessionTime").innerHTML);
 	if(sessionTimeInline>0){
